@@ -72,5 +72,10 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        if (m_Points > DataStorage.Instance.GetLastBestScore())
+        {
+            DataStorage.Instance.StoreLastBestScore(m_Points, DataStorage.Instance.GetPlayerName());
+            DataStorage.Instance.SaveDataToStorage();
+        }
     }
 }
